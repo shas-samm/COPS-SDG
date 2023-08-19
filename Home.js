@@ -5,15 +5,21 @@ import SCHEDULES from './schedule';
 
 const Home = () => {
   const[items,setItems]=useState(SCHEDULES);
+  const filterItem=(categItem)=>{
+    const updatedItems = SCHEDULES.filter((curElem)=>{
+      return curElem.category==categItem;
+    });
+    setItems(updatedItems);
+  }
     return (
 <>
 <h2>Select your favourite sport</h2>
 <div className="schedule-tab container">
   <div className="schedule-tab justify-content-around">
-  <button className="btn btn-primary">CRICKET</button>
-  <button className="btn btn-success">FOOTBALL</button>
-  <button className="btn btn-dark">HOCKEY</button>
-  <button className="btn btn-warning">BASKETBALL</button>
+  <button className="btn btn-primary" onClick={()=>filterItem('Cricket')}>CRICKET</button>
+  <button className="btn btn-success" onClick={()=>filterItem('Football')}>FOOTBALL</button>
+  <button className="btn btn-dark" onClick={()=>filterItem('Hockey')}>HOCKEY</button>
+  <button className="btn btn-warning" onClick={()=>filterItem('Basketball')}>BASKETBALL</button>
   </div>
 </div>
 <div className="row my-5">
@@ -48,5 +54,4 @@ const Home = () => {
 </>
   )
 }
-
-export default Home
+ export default Home
