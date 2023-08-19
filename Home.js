@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
+import SCHEDULES from './schedule';
 
 const Home = () => {
+  const[items,setItems]=useState(SCHEDULES);
     return (
 <>
 <h2>Select your favourite sport</h2>
@@ -14,25 +16,35 @@ const Home = () => {
   <button className="btn btn-warning">BASKETBALL</button>
   </div>
 </div>
-<Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
+<div className="row my-5">
+  {
+    items.map((elem)=>{
+      const {id,image,teamA,teamB,venue,time}=elem;
+      return(
+        <Card style={{ width: '18rem' }}>
+      <Card.Img variant="top" src="{image}" />
       <Card.Body>
-        <Card.Title>Card Title</Card.Title>
+        <Card.Title>CRICKET</Card.Title>
         <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+          Wonderful match to be played under some wonderful atmosphere
         </Card.Text>
       </Card.Body>
       <ListGroup className="list-group-flush">
-        <ListGroup.Item>Cras justo odio</ListGroup.Item>
-        <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-        <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+        <ListGroup.Item>{teamA} (V/S) {teamB}</ListGroup.Item>
+        <ListGroup.Item>{venue}</ListGroup.Item>
+        <ListGroup.Item>{time}</ListGroup.Item>
       </ListGroup>
       <Card.Body>
-        <Card.Link href="#">Card Link</Card.Link>
-        <Card.Link href="#">Another Link</Card.Link>
+        <Card.Link href="#">TICKETS</Card.Link>
+        <Card.Link href="#">ORDER FOOD</Card.Link>
       </Card.Body>
     </Card>
+      )
+})
+  }
+</div>
+
+    
 </>
   )
 }
