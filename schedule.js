@@ -71,4 +71,5 @@ const SCHEDULES=[
         venue:"Rajputana Ground",
         time:"6:00 PM",
     },
-]
+];
+export default SCHEDULES;
